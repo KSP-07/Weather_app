@@ -25,14 +25,14 @@ export default function Weather() {
       console.log(e);
     }
   }
+  function handleSearch() {
+      fetchWeatherData(search);
+    }
 
   useEffect(() => {
     fetchWeatherData("Noida");
   }, []);
 
-  function handleSearch() {
-    fetchWeatherData(search);
-  }
 
   function getCurrentDate() {
     return new Date().toLocaleDateString("en-us", {
@@ -62,7 +62,7 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp">{weatherData?.main?.temp}</div>
+          <div className="temp">{weatherData?.main?.temp-273}</div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].description
